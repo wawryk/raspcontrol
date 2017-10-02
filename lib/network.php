@@ -17,14 +17,12 @@ class Network {
 
     public static function ethernet() {
         global $ssh;
-        $data = $ssh->shell_exec_noauth("/sbin/ifconfig eth0 | grep RX\ bytes");
-        $data = str_ireplace("RX bytes:", "", $data);
-        $data = str_ireplace("TX bytes:", "", $data);
+        $data = $ssh->shell_exec_noauth("/sbin/ifconfig eth0 | grep -oP 'bytes [0-9]*'");
+        $data = str_ireplace("bytes", "", $data);
         $data = trim($data);
         $data = explode(" ", $data);
-
         $rxRaw = $data[0] / 1024 / 1024;
-        $txRaw = $data[4] / 1024 / 1024;
+        $txRaw = $data[1] / 1024 / 1024;
         $rx = round($rxRaw, 2);
         $tx = round($txRaw, 2);
 

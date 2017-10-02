@@ -14,20 +14,21 @@ class Memory {
 
         $result = array();
 
-        $out = $ssh->exec_noauth('free -mo');
+        $out = $ssh->exec_noauth('free -m');
         preg_match_all('/\s+([0-9]+)/', $out[1], $matches);
         list($total, $used, $free, $shared, $buffers, $cached) = $matches[1];
 
         $ramDetails = $ssh->shell_exec_noauth('ps -e -o pmem,user,args --sort=-pmem | sed "/^ 0.0 /d" | head -' . self::$DETAIL_LINE_COUNT);
 
-        $result['percentage'] = round(($used - $buffers - $cached) / $total * 100);
+//        $result['percentage'] = round(($used - $buffers - $cached) / $total * 100);
+	$result['percentage'] = round($used / $total * 100);
         if ($result['percentage'] >= '80')
             $result['alert'] = 'warning';
         else
             $result['alert'] = 'success';
 
-        $result['free'] = $free + $buffers + $cached;
-        $result['used'] = $used - $buffers - $cached;
+        $result['free'] = $free; //+ $buffers + $cached;
+        $result['used'] = $used; // - $buffers - $cached;
         $result['total'] = $total;
         $result['detail'] = $ramDetails;
 
@@ -38,7 +39,7 @@ class Memory {
         global $ssh;
         $result = array();
 
-        $out = $ssh->exec_noauth('free -mo');
+        $out = $ssh->exec_noauth('free -m');
         preg_match_all('/\s+([0-9]+)/', $out[2], $matches);
         list($total, $used, $free) = $matches[1];
 

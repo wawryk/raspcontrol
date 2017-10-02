@@ -29,13 +29,13 @@ In order to have some beautiful URLs, you can enable URL Rewriting.
 __Note:__ It's not necessary to enable URL Rewriting to use Raspcontrol.
 
 
-
+##UPDATE
 This repo have some fixes with: 
-	network statistics, 
-	cpu heat - now is in celsius degrees,
-	memory statistics.
+           network statistics, 
+           cpu heat - now is in celsius degrees,
+           memory statistics.
 
 Test on:
-	distribution: Raspbian GNU/Linux 9 (stretch) 
-	kernel: Linux 4.9.41+ armv6l 
-	firmware: #1023 Tue Aug 8 15:47:12 BST 2017
+           distribution: Raspbian GNU/Linux 9 (stretch) 
+           kernel: Linux 4.9.41+ armv6l 
+           firmware: #1023 Tue Aug 8 15:47:12 BST 2017

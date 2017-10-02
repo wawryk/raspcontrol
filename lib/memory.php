@@ -27,7 +27,7 @@ class Memory {
         else
             $result['alert'] = 'success';
 
-        $result['free'] = $free; //+ $buffers + $cached;
+        $result['free'] = $total - $used; //$free + $buffers + $cached;
         $result['used'] = $used; // - $buffers - $cached;
         $result['total'] = $total;
         $result['detail'] = $ramDetails;
@@ -49,7 +49,7 @@ class Memory {
         else
             $result['alert'] = 'success';
 
-        $result['free'] = $free;
+        $result['free'] = $total - $used; //$free;
         $result['used'] = $used;
         $result['total'] = $total;
 

@@ -19,6 +19,7 @@ $cpu_heat = CPU::heat();
 $hdd = Storage::hdd();
 $net_connections = Network::connections();
 $net_eth = Network::ethernet();
+$net_wlan = Network::wireless();
 $users = Users::connected();
 $temp = Temp::temp();
 
@@ -157,8 +158,9 @@ function shell_to_html_table_result($shellExecOutput) {
             <td class="infos">
                 IP: <span class="text-info"><?php echo Rbpi::internalIp(); ?></span> [internal] &middot;
                 <span class="text-info"><?php echo Rbpi::externalIp(); ?></span> [external]
-                <br />received: <strong><?php echo $net_eth['down']; ?>Mb</strong> &middot; sent: <strong><?php echo $net_eth['up']; ?>Mb</strong> &middot; total: <?php echo $net_eth['total']; ?>Mb
+                <br /><b>ETH0: </b>received: <strong><?php echo $net_eth['down']; ?>Mb</strong> &middot; sent: <strong><?php echo $net_eth['up']; ?>Mb</strong> &middot; total: <?php echo $net_eth['total']; ?>Mb
                 <br />connections: <?php echo $net_connections['connections']; ?>
+                <br /><b>WLAN0: </b>received: <strong><?php echo $net_wlan['down']; ?>Mb</strong> &middot; sent: <strong><?php echo $net_wlan['up']; ?>Mb</strong> &middot; total: <?php echo $net_wlan['total']; ?>Mb
             </td>
         </tr>
 

@@ -33,4 +33,23 @@ class Network {
         );
     }
 
+    public static function wireless() {
+        global $ssh;
+        $data = $ssh->shell_exec_noauth("/sbin/ifconfig wlan0 | grep -oP 'bytes [0-9]*'");
+        $data = str_ireplace("bytes", "", $data);
+        $data = trim($data);
+        $data = explode(" ", $data);
+        $rxRaw = $data[0] / 1024 / 1024;
+        $txRaw = $data[1] / 1024 / 1024;
+        $rx = round($rxRaw, 2);
+        $tx = round($txRaw, 2);
+
+        return array(
+            'up' => $tx,
+            'down' => $rx,
+            'total' => $rx + $tx
+        );
+    }
+
+
 }

@@ -170,8 +170,8 @@ if (isset($_GET['action']) && isset($_GET['username']) && isset($_GET['password'
 
     <footer>
         <div class="container">
-            <p>Powered by <a href="https://github.com/harmon25/raspcontrol">Raspcontrol</a>.</p>
-            <p>Sources are available on <a href="https://github.com/harmon25/raspcontrol">Github</a>.</p>
+            <p>Powered by <a href="https://github.com/wawryk/raspcontrol">Raspcontrol</a>.</p>
+            <p>Sources are available on <a href="https://github.com/wawryk/raspcontrol">Github</a>.</p>
         </div>
     </footer>
 
